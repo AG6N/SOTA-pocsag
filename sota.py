@@ -6,6 +6,10 @@ import subprocess
 import time
 
 url = "https://api2.sota.org.uk/api/spots/1/all"
+RemoteCommand = "/usr/local/bin/RemoteCommand"
+port = "7642"
+page = "page"
+ric = "0000056"
 
 response = requests.get(url)
 data = json.loads(response.text)
@@ -22,6 +26,6 @@ while True:
     if data[0]["id"]==id:
          pass
     else:
-        subprocess.call(["echo","1234 page 1234567 " +" ".join([activatorCallsign,frequency,mode,summitCode])])
+         subprocess.call([RemoteCommand, port, page, ric, activatorCallsign, frequency, mode, summitCode])
     id = data[0]["id"]
-    time.sleep(15)
+    time.sleep(120)

@@ -26,6 +26,11 @@ while True:
     if data[0]["id"]==id:
          pass
     else:
+         # Update the variables
+         id = data[0]["id"]
+         activatorCallsign = data[0]["activatorCallsign"]
+         frequency = data[0]["frequency"]
+         mode = data[0]["mode"]
+         summitCode = data[0]["summitCode"]
          subprocess.call([RemoteCommand, port, page, ric, activatorCallsign, frequency, mode, summitCode])
-    id = data[0]["id"]
     time.sleep(120)
